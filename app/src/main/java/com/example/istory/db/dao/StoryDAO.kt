@@ -23,7 +23,7 @@ interface StoryDAO {
     @Query("DELETE FROM ${TableNames.STORY_DATA_TABLE}")
     suspend fun clearArchive():Int
 
-    @Query("SELECT * FROM ${TableNames.STORY_DATA_TABLE}")
+    @Query("SELECT * FROM ${TableNames.STORY_DATA_TABLE} WHERE active=1")
     fun getAllActiveStories():LiveData<List<Story>>
 
     @Query("SELECT * FROM ${TableNames.STORY_DATA_TABLE} WHERE active=0")

@@ -3,15 +3,25 @@
     <group>
         <item
             android:id="@+id/list"
+            android:icon="@drawable/ic_story"
+            android:title="Your Stories"/>
+        <item
+            android:id="@+id/todDoList"
             android:icon="@drawable/list_menu"
-            android:title="List"/>
+            android:title="To-Do List"/>
+
         <item
             android:id="@+id/calendar"
             android:icon="@drawable/calendar"
             android:title="Calendar"/>
+
+    </group>
+    <group>
+
         <item  android:id="@+id/settings"
             android:icon="@drawable/settings"
             android:title="Settings"/>
+
     </group>
 
 </menu>

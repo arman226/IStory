@@ -4,12 +4,16 @@ import android.content.Context
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
+import androidx.room.TypeConverters
 import com.example.istory.db.dao.StoryDAO
 import com.example.istory.db.entity.Story
 import com.example.istory.db.entity.User
+import com.example.istory.db.helpers.Converters
 
-
-@Database(entities = [Story::class, User::class],version = 1)
+@TypeConverters(Converters::class)
+@Database(
+    entities = [Story::class, User::class],
+    version = 3)
 abstract class IStoryDatabase: RoomDatabase() {
 
     abstract val storyDAO:StoryDAO

@@ -1,4 +1,4 @@
-package com.example.istory
+package com.example.istory.ui
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -9,6 +9,7 @@ import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
+import com.example.istory.R
 import com.example.istory.fragments.CalendarFragment
 import com.example.istory.fragments.ListFragment
 import com.google.android.material.navigation.NavigationView
@@ -33,7 +34,9 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         Toast.makeText(this,item.title, Toast.LENGTH_SHORT).show()
         when(item.itemId){
+            //Screen that shows a list of active stories
             R.id.list -> switchFragment(listFragment)
+            //Screen that shows the calendar view
             R.id.calendar -> switchFragment(calendarFragment)
         }
         drawerLayout.closeDrawer(GravityCompat.START)

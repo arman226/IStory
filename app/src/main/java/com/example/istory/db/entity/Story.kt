@@ -1,9 +1,8 @@
 package com.example.istory.db.entity
 
-import androidx.room.ColumnInfo
-import androidx.room.Entity
-import androidx.room.PrimaryKey
+import androidx.room.*
 import com.example.istory.constants.TableNames
+import com.example.istory.db.helpers.Converters
 import java.util.*
 
 @Entity(tableName = TableNames.STORY_DATA_TABLE)
