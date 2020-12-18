@@ -1,4 +1,4 @@
-package com.example.istory.ui
+package com.example.istory.ui.main
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -7,15 +7,22 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.widget.Toolbar
 import androidx.core.view.GravityCompat
+import androidx.databinding.DataBindingUtil
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.ViewModelProvider
+import com.example.istory.BaseApp
 import com.example.istory.R
+import com.example.istory.databinding.ActivityMainBinding
 import com.example.istory.fragments.CalendarFragment
 import com.example.istory.fragments.ListFragment
+import com.example.istory.viewmodel.StoryViewModel
 import com.google.android.material.navigation.NavigationView
 
 class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
+    lateinit var binding:ActivityMainBinding
+    private lateinit var storyViewModel: StoryViewModel
     lateinit var toolbar: Toolbar
     lateinit var drawerLayout:DrawerLayout
     lateinit var navigationView: NavigationView
@@ -32,7 +39,6 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
     //switch fragments whenever an item is selected from the navigation menu
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        Toast.makeText(this,item.title, Toast.LENGTH_SHORT).show()
         when(item.itemId){
             //Screen that shows a list of active stories
             R.id.list -> switchFragment(listFragment)
@@ -64,6 +70,14 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
 
         //set the list Fragment as the initial fragment
        switchFragment(listFragment)
+        //binding
+        setBinding()
+
+    }
+
+    private fun setBinding(){
+        val factory = (application as BaseApp).getVMFactory()
+        storyViewModel= ViewModelProvider(this, factory).get(StoryViewModel::class.java)
     }
 
     fun switchFragment(fragment: Fragment){

@@ -1,5 +1,6 @@
 package com.example.istory.viewmodel
 
+import android.widget.Toast
 import androidx.databinding.Bindable
 import androidx.databinding.Observable
 import androidx.lifecycle.MutableLiveData
@@ -11,11 +12,16 @@ import kotlinx.coroutines.Job
 import kotlinx.coroutines.launch
 import java.time.LocalDate
 import java.util.*
+import javax.inject.Inject
+import kotlin.coroutines.coroutineContext
 
 private const val SAVE ="Save"
 private const val UPDATE = "Update"
 
-class StoryViewModel(private val storyRepository: StoryRepository): ViewModel(), Observable {
+class StoryViewModel
+
+    @Inject
+    constructor(private val storyRepository: StoryRepository): ViewModel(), Observable {
 
     val stories = storyRepository.stories
 
@@ -51,7 +57,7 @@ class StoryViewModel(private val storyRepository: StoryRepository): ViewModel(),
         else{
         val name =inputTitle.value!!
         //temp
-        val content = "just for testing sake"
+        val content = inputContent.value!!
         val date:Date = Date()
         val active = true;
         insert(Story(0,name,content,date,active))
@@ -82,6 +88,9 @@ class StoryViewModel(private val storyRepository: StoryRepository): ViewModel(),
     fun clearFields(){
         inputTitle.value=""
         inputContent.value=""
+        isUpdate= false
+        saveOrUpdateButtonText.value = SAVE
+
     }
 
     fun initStoryToBeUpdated(story: Story){

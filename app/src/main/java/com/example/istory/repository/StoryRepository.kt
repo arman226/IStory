@@ -2,8 +2,10 @@ package com.example.istory.repository
 
 import com.example.istory.db.dao.StoryDAO
 import com.example.istory.db.entity.Story
+import javax.inject.Inject
 
-class StoryRepository(private var dao:StoryDAO) {
+class StoryRepository @Inject constructor
+    (private var dao:StoryDAO) {
 
     val stories= dao.getAllActiveStories()
 

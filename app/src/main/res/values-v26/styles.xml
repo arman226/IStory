@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <style name="Theme.IStory.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
-        <item name="android:statusBarColor">@android:color/transparent</item>
-    </style>
+
+
+
     <style name="cardButton">
         <item name="android:textSize">14dp</item>
         <item name="cardBackgroundColor">@color/primaryColor</item>
@@ -16,12 +14,4 @@
         <item name="android:clickable">true</item>
         <item name="android:focusable">true</item>
     </style>
-    <style name="cardButtonText">
-        <item name="android:layout_width">match_parent</item>
-        <item name="android:layout_height">wrap_content</item>
-        <item name="android:gravity">center</item>
-        <item name="android:textColor">@color/white</item>
-        <item name="android:textStyle">bold</item>
-    </style>
-
 </resources>

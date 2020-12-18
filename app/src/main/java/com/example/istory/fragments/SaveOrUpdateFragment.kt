@@ -6,33 +6,52 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
-import com.example.istory.BaseApp
 import com.example.istory.R
 import com.example.istory.databinding.FragmentCalendarBinding
+import com.example.istory.databinding.FragmentSaveOrUpdateBinding
 import com.example.istory.viewmodel.StoryViewModel
 
 
-class CalendarFragment : Fragment(R.layout.fragment_calendar) {
-
-    lateinit var binding:FragmentCalendarBinding
+class SaveOrUpdateFragment : Fragment(R.layout.fragment_save_or_update) {
+    lateinit var binding: FragmentSaveOrUpdateBinding
     private lateinit var storyViewModel: StoryViewModel
+    private lateinit var listFragment: ListFragment
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-//        return super.onCreateView(inflater, container, savedInstanceState)
 
-        binding= DataBindingUtil.inflate(inflater, R.layout.fragment_calendar, container, false);
+        binding= DataBindingUtil.inflate(inflater, R.layout.fragment_save_or_update, container, false);
         storyViewModel= ViewModelProviders.of(requireActivity()).get(StoryViewModel::class.java)
         binding.myViewModel = storyViewModel
         binding.lifecycleOwner=requireActivity()
 
-        return binding.root
+        listFragment= ListFragment()
 
+        binding.cancelStoryButton.setOnClickListener{
+            storyViewModel.clearFields()
+           backToList()
+        }
+
+        binding.submitStoryButton.setOnClickListener(){
+            storyViewModel.saveOrUpdate()
+            backToList()
+        }
+
+        return binding.root
     }
+
+    fun backToList(){
+        requireActivity().supportFragmentManager.beginTransaction().apply {
+            replace(R.id.fl_fragment,listFragment)
+            commit()
+        }
+    }
+
+
+
 
 }

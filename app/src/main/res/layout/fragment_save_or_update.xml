@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <data>
+        <variable
+            name="myViewModel"
+            type="com.example.istory.viewmodel.StoryViewModel" />
+    </data>
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="15dp"
+    tools:context=".fragments.SaveOrUpdateFragment">
+    <EditText
+        android:id="@+id/inputTitleEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="title"
+        android:text="@={myViewModel.inputTitle}" />
+    <EditText
+        android:id="@+id/inputContentEditText"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="content"
+        android:text="@={myViewModel.inputContent}" />
+    <androidx.cardview.widget.CardView
+        style="@style/cardButton">
+        <TextView android:id="@+id/submit_story_button"
+           style="@style/cardButtonText"
+           android:text="@={myViewModel.saveOrUpdateButtonText}"/>
+    </androidx.cardview.widget.CardView>
+    <androidx.cardview.widget.CardView
+        style="@style/cardButton">
+        <TextView android:id="@+id/cancel_story_button"
+            style="@style/cardButtonText"
+            android:text="Cancel"/>
+    </androidx.cardview.widget.CardView>
+
+
+
+
+</LinearLayout>
+</layout>
