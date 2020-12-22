@@ -35,12 +35,7 @@ class ListFragment : Fragment(R.layout.fragment_list) {
         binding.lifecycleOwner=requireActivity()
         initializeStoriesRecyclerView()
 
-          //move to story creating page
-        binding.createStoryButton.setOnClickListener{
-         moveToSaveOrUpdateStory()
-        }
-
-          saveOrUpdateFragment= SaveOrUpdateFragment()
+        saveOrUpdateFragment= SaveOrUpdateFragment()
 
         return binding.root
     }
@@ -51,7 +46,7 @@ class ListFragment : Fragment(R.layout.fragment_list) {
             //bind your custom adapter to recycler view and pass the stories as parameter
             binding.storyRecyclerView.adapter= StoryListAdapter(it, {
                 selectedItem-> onStoryClicked(selectedItem)
-            });
+            }, {moveToSaveOrUpdateStory()});
         })
 
     }

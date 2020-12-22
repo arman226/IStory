@@ -7,43 +7,23 @@
          name="myViewModel"
          type="com.example.istory.viewmodel.StoryViewModel" />
  </data>
-<FrameLayout
-    android:padding="15dp"
+<LinearLayout
+    android:paddingHorizontal="15dp"
     android:layout_width="match_parent"
     android:background="@color/lightgrey"
-    android:layout_height="match_parent"
+    android:layout_height="wrap_content"
     tools:context=".fragments.ListFragment">
 
-<LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Quick Start"
-        android:textStyle="bold"
-        android:textColor="@color/black"
-        android:textSize="18dp"/>
-
-
-    <androidx.cardview.widget.CardView
-        android:id="@+id/create_story_button"
-        style="@style/cardButton">
-        <TextView
-            style="@style/cardButtonText"
-            android:text="Create A Story"/>
-    </androidx.cardview.widget.CardView>
     <!--    this will contain the list of stories-->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/story_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="5dp"
-
+        android:layout_marginBottom="20dp"
         />
 
+
 </LinearLayout>
-</FrameLayout>
 </layout>
