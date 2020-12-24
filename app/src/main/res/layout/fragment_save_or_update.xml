@@ -11,18 +11,40 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="15dp"
+    android:background="@color/lightgrey"
     tools:context=".fragments.SaveOrUpdateFragment">
+    <TextView
+        android:id="@+id/update_or_create_label"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/black"
+        android:textSize="25dp"
+        android:textStyle="bold"
+        android:text="Create Story"/>
+
     <EditText
         android:id="@+id/inputTitleEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="title"
+        android:background="@color/white"
+        android:textColorHint="@color/grey"
+        android:padding="10dp"
+        android:textStyle="bold"
+        android:layout_marginVertical="10dp"
+        android:hint="What's the title of your story?"
         android:text="@={myViewModel.inputTitle}" />
+
     <EditText
         android:id="@+id/inputContentEditText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="content"
+        android:minHeight="300dp"
+        android:padding="10dp"
+        android:hint="Type your content here..."
+        android:gravity="start|top"
+        android:inputType="textMultiLine"
+        android:background="@color/white"
+        android:textColorHint="@color/grey"
         android:text="@={myViewModel.inputContent}" />
     <androidx.cardview.widget.CardView
         style="@style/cardButton">

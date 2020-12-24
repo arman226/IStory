@@ -42,11 +42,14 @@ class ListFragment : Fragment(R.layout.fragment_list) {
 
     //this is a function that observes the list of stories
     private fun displayStoriesList(){
+
         storyViewModel.stories.observe(viewLifecycleOwner, Observer {
-            //bind your custom adapter to recycler view and pass the stories as parameter
-            binding.storyRecyclerView.adapter= StoryListAdapter(it, {
+            var adapter=StoryListAdapter(it, {
                 selectedItem-> onStoryClicked(selectedItem)
             }, {moveToSaveOrUpdateStory()});
+            //bind your custom adapter to recycler view and pass the stories as parameter
+            binding.storyRecyclerView.adapter= adapter
+
         })
 
     }

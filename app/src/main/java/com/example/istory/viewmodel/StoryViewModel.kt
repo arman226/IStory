@@ -38,20 +38,21 @@ class StoryViewModel
     @Bindable
     val saveOrUpdateButtonText= MutableLiveData<String>();
 
-    var isUpdate= false
+    var isUpdate= MutableLiveData<Boolean>();
 
     init {
         saveOrUpdateButtonText.value = SAVE
+        isUpdate.value = false
     }
 
     fun saveOrUpdate(){
-        if(isUpdate){
+        if(isUpdate.value!!){
             storyToBeUpdatedOrDeleted.title= inputTitle.value!!
             storyToBeUpdatedOrDeleted.content= inputContent.value!!
             update(storyToBeUpdatedOrDeleted)
             saveOrUpdateButtonText.value=SAVE
             clearFields()
-            isUpdate=false
+            isUpdate.value=false
 
         }
         else{
@@ -88,7 +89,7 @@ class StoryViewModel
     fun clearFields(){
         inputTitle.value=""
         inputContent.value=""
-        isUpdate= false
+        isUpdate.value= false
         saveOrUpdateButtonText.value = SAVE
 
     }
@@ -96,7 +97,7 @@ class StoryViewModel
     fun initStoryToBeUpdated(story: Story){
         inputTitle.value= story.title
         inputContent.value = story.content
-        isUpdate= true
+        isUpdate.value= true
         saveOrUpdateButtonText.value = UPDATE
         storyToBeUpdatedOrDeleted = story
     }

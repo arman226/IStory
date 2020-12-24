@@ -1,6 +1,7 @@
 package com.example.istory.adapter
 
 import android.content.Context
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -43,14 +44,17 @@ class StoryListAdapter( private val stories: List<Story>, private val clickListe
             else -> throw IllegalArgumentException("Invalid view type")
         }
 
+
     }
 
     override fun getItemCount(): Int {
-        return stories.size
-    }
 
+           return stories.size+1
+
+    }
     override fun onBindViewHolder(holder: BaseViewHolder<*>, position: Int) {
-        holder.bind(stories[position], clickListener, holder.itemViewType)
+        if(holder.itemViewType== TYPE_LIST)
+      holder.bind(stories[position-1], clickListener)
     }
 
 }
@@ -58,17 +62,21 @@ class StoryListAdapter( private val stories: List<Story>, private val clickListe
 
 class HeaderViewHolder(val binding:StorylistHeaderBinding, val onCreateStory: () -> Unit): BaseViewHolder<View>(binding.root) {
 
-    override fun bind(story: Story, clickListener: (Story) -> Unit, viewType: Int) {
+    init {
         binding.createStoryButton.setOnClickListener{
             onCreateStory()
         }
+    }
+    override fun bind(story: Story, clickListener: (Story) -> Unit) {
+
 
     }
 }
 
  class ItemViewHolder(val binding:StoryListItemBinding): BaseViewHolder<View>(binding.root) {
 
-     override fun bind(story: Story, clickListener: (Story) -> Unit, viewType: Int) {
+     override fun bind(story: Story, clickListener: (Story) -> Unit) {
+
          binding.storyTitleTextView.text = story.title
             binding.dateTextView.text= story.date.toString()
             binding.listItemLayout.setOnClickListener{

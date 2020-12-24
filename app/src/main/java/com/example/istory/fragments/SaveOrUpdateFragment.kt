@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.istory.R
 import com.example.istory.databinding.FragmentCalendarBinding
@@ -28,6 +29,14 @@ class SaveOrUpdateFragment : Fragment(R.layout.fragment_save_or_update) {
         storyViewModel= ViewModelProviders.of(requireActivity()).get(StoryViewModel::class.java)
         binding.myViewModel = storyViewModel
         binding.lifecycleOwner=requireActivity()
+        storyViewModel.isUpdate.observe(viewLifecycleOwner, Observer{
+            if(it){
+                binding.updateOrCreateLabel.text = "Update Story"
+            }
+            else {
+                binding.updateOrCreateLabel.text= "Create Story"
+            }
+        })
 
         listFragment= ListFragment()
 

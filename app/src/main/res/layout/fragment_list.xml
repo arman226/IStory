@@ -11,15 +11,15 @@
     android:paddingHorizontal="15dp"
     android:layout_width="match_parent"
     android:background="@color/lightgrey"
-    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:layout_height="match_parent"
     tools:context=".fragments.ListFragment">
-
 
     <!--    this will contain the list of stories-->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/story_recycler_view"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
         android:layout_marginTop="5dp"
         android:layout_marginBottom="20dp"
         />

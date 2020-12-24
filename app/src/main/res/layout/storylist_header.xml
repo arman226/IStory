@@ -12,6 +12,7 @@
             android:layout_height="wrap_content"
             android:text="Quick Start"
             android:textStyle="bold"
+            android:paddingTop="10dp"
             android:textColor="@color/black"
             android:textSize="18dp"/>
 
