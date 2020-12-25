@@ -37,17 +37,23 @@ class SaveOrUpdateFragment : Fragment(R.layout.fragment_save_or_update) {
                 binding.updateOrCreateLabel.text= "Create Story"
             }
         })
+        //set date
+        storyViewModel.date.observe(viewLifecycleOwner, Observer {
+            binding.dateText.text = it.toString();
+        })
 
         listFragment= ListFragment()
 
+        //cancel button
         binding.cancelStoryButton.setOnClickListener{
             storyViewModel.clearFields()
            backToList()
         }
 
+        //save button
         binding.submitStoryButton.setOnClickListener(){
-            storyViewModel.saveOrUpdate()
             backToList()
+            storyViewModel.saveOrUpdate()
         }
 
         return binding.root

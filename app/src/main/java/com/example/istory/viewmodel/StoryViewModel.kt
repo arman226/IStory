@@ -40,9 +40,12 @@ class StoryViewModel
 
     var isUpdate= MutableLiveData<Boolean>();
 
+    var date= MutableLiveData<Date>();
+
     init {
         saveOrUpdateButtonText.value = SAVE
         isUpdate.value = false
+        date.value= Date()
     }
 
     fun saveOrUpdate(){
@@ -59,9 +62,8 @@ class StoryViewModel
         val name =inputTitle.value!!
         //temp
         val content = inputContent.value!!
-        val date:Date = Date()
         val active = true;
-        insert(Story(0,name,content,date,active))
+        insert(Story(0,name,content,date.value!!,active))
         //clear the fields
         clearFields()}
     }
@@ -91,12 +93,14 @@ class StoryViewModel
         inputContent.value=""
         isUpdate.value= false
         saveOrUpdateButtonText.value = SAVE
+        date.value= Date()
 
     }
 
     fun initStoryToBeUpdated(story: Story){
         inputTitle.value= story.title
         inputContent.value = story.content
+        date.value = story.date
         isUpdate.value= true
         saveOrUpdateButtonText.value = UPDATE
         storyToBeUpdatedOrDeleted = story
